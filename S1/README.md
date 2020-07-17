@@ -1,9 +1,9 @@
 # Session 1 - Serverless deploy of Deep Learning Model on AWS
 
-##	Objective
+## Objective
 Deployed Mobile Net v2 by using serverless on AWS Cloud Formation. The AWS Cloud Formation will gather the multiple resources to start the application and we can manage the resources from single stack. For Computing of the model used AWS Lambda (event based trigger). The API gateway to manage the requests. S3 storage used as model storage and temporary storage.
 
-##	Prerequisite
+## Prerequisite
 1.  **Node JS** 
 2.  **Docker**
 3.  **Serverless (SLS)** 
@@ -11,7 +11,7 @@ Deployed Mobile Net v2 by using serverless on AWS Cloud Formation. The AWS Cloud
 5.  **Conda**
 6.  **Pytorch**
 
-##	Pre-Trained Model
+## Pre-Trained Model
 The mobilenetv2 can be easily obtained from the torcha and torchvision model. Please run below lines of code to get the pre-trained model.
 
            import torch
@@ -30,10 +30,21 @@ The mobilenetv2 can be easily obtained from the torcha and torchvision model. Pl
 
 ## Deploy the Model
 Store the credentials in `~/.aws/credentails` to run the serverless application. Install the requirements plugin in the serverless app.
-      serverless plugin install -n serverless-python-requirements
+      `serverless plugin install -n serverless-python-requirements`
 Now run the command.
-      serverless deploy
+      `serverless deploy`
 
-##	Testing
-Now paste the link in 
+## Change the AWS Gateway to accept multiform data
+Go to your API gateway and do the following steps shown in the image. I have seen the issues when first time you run the model the uploaded image in the binary format. If you redeploy again the issue will be gone and the API Gateway will convert your images into the HEX format and your code will run fine. While redeploying there is no need to delte the stack. Just use the `serverless deploy` command again. In the end it will shows you the url of the api-gateway to accept your requests.
+<img src="S3.jpg">
+
+## Testing
+Now paste the link in the Postman. Select the image you want to test it. Go into the Body and choose from-data. In the header add one more key and add the content-type with their key and value will be multipart/form-data. Initially the AWS Lambda will be in cool stage so your first two request will be server timeout. After that will predict your predictions.
 <img src="mobilenetv2.jpg">
+
+### Appendix
+ - Great thanks to the [blog.](https://towardsdatascience.com/scaling-machine-learning-from-zero-to-hero-d63796442526)
+ - [Docker](https://docs.docker.com/engine/install/ubuntu/) 
+ - [Pytorch wheel](https://download.pytorch.org/whl/torch_stable.html)
+ - [AWS Regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints)
+ - [Docker Errors](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket)
