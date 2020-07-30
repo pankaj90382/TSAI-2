@@ -1,4 +1,4 @@
-# Session 2 - Serverless deploy of Deep Learning Model on AWS
+# Session 2 - Transfer Learning with Custom Classes on Mobile-Net v2 Architecture (Using Pretrained Imagenet Model)
 
 ## Objective
 Deployed Mobile Net v2 by using serverless on AWS Cloud Formation. The AWS Cloud Formation will gather the multiple resources to start the application and we can manage the resources from single stack. For Computing of the model used AWS Lambda (event based trigger). The API gateway to manage the requests. S3 storage used as model storage and temporary storage.
