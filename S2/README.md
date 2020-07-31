@@ -13,24 +13,20 @@ A custom dataset will be used to train model, which consists of:
 
 ### Image Augmentation
 
-I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation. There is small anomaly when you load the grayscale images like fgbgmask and fgbgdense by using albumenations. The image shape is when you read through PIL is (H, W). By default the Albumenations need the channel also. I converted grayscale images to nd array to create the one new dimension.
+I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation.
 
 - **Resize**:
 	- Downscale the images to be able to train for lower dimensions first.
-	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
 - **RandomBrightnessContrast** & **HueSaturationValue**:
 	- Used to reduce the dependency on image colours for prediction.
-	- One of these was applied randomly to **bg, fgbg, fgbgmask and fgbgdense** images.
 - **ShiftScaleRotate**:
-	- Translate, scale and rotate to **bg, fgbg, fgbgmask and fgbgdense** images.
+	- Translate, scale and rotate images.
 - **'GridDistortion'**:
-	- Grid analysis estimates the distortion from a checkerboard or thin line grid
-	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
+	- Grid analysis estimates the distortion from a checkerboard or thin line grid.
 - **RandomRotate90**:
 	- Images were randomly rotated within 90 degrees.
-	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
 
-### Sample Imaages
+### Sample Images
 <img src="Save_Model/Sample.jpg">
 
 ### Model Architecture
@@ -60,14 +56,20 @@ CrossEntropyLoss - Used Cross Entropy Loss to get the desired results
 ### Miss Classified Images
 The Miss classified images with their gradcam results.
 <img src="Save_Model/Mis-classified Images.jpg">
-<img src="Save_Model/gradcam_Incorrect.png">
+<figure>
+    <figcaption>Grad-Cam Incorrect Images</figcaption>
+    <img src="Save_Model/gradcam_Incorrect.png">
+</figure>
 
 ### Correctly Classified Images
 The Correctly classified images with their gradcam results.
 <img src="Save_Model/Corr-classified Images.jpg">
-<img src="Save_Model/gradcam_Correct.png">
+<figure>
+    <figcaption>Grad-Cam Correct Images</figcaption>
+    <img src="Save_Model/gradcam_Correct.png">
+</figure>
 
-### Appendix
+## Appendix
  - Great thanks to the [blog.](https://www.analyticsvidhya.com/blog/2019/10/how-to-master-transfer-learning-using-pytorch/)
  - [Pytorch Transfer Learning](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) 
  - [Pytorch Neural Transfer Style](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)
