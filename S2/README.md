@@ -34,13 +34,23 @@ Store the credentials in `~/.aws/credentails` to run the serverless application.
 Now run the command.
       `serverless deploy`
 
-## Change the AWS Gateway to accept multiform data
+## Learning Rate
 Go to your API gateway and do the following steps shown in the image. I have seen the issues when first time you run the model the uploaded image in the binary format. If you redeploy again the issue will be gone and the API Gateway will convert your images into the HEX format and your code will run fine. While redeploying there is no need to delte the stack. Just use the `serverless deploy` command again. In the end it will shows you the url of the api-gateway to accept your requests.
-<img src="S3.jpg">
 
-## Testing
+<img src="Save_Model/Learning_Rate_Curve.jpg">
+<img src="Save_Model/Batch_Train_Val_Loss_Curve.jpg">
+<img src="Save_Model/Accuracy_Curve.jpg">
+<img src="Save_Model/Validation_Curve.jpg">
+
+## Results
 Now paste the link in the Postman. Select the image you want to test it. Go into the Body and choose from-data. In the header add one more key and add the content-type with their key and value will be multipart/form-data. Initially the AWS Lambda will be in cool stage so your first two request will be server timeout. After that will predict your predictions.
-<img src="mobilenetv2.jpg">
+<img src="Save_Model/Mis-classified Images.jpg">
+<img src="Save_Model/Corr-classified Images.jpg">
+
+## GradCam Results
+
+<img src="Save_Model/gradcam_Correct.png">
+<img src="Save_Model/gradcam_Incorrect.png">
 
 ### Appendix
  - Great thanks to the [blog.](https://www.analyticsvidhya.com/blog/2019/10/how-to-master-transfer-learning-using-pytorch/)
