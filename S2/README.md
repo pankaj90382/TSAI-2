@@ -1,56 +1,71 @@
 # Session 2 - Transfer Learning with Custom Classes on Mobile-Net v2 Architecture (Using Pretrained Imagenet Model)
 
 ## Objective
-Deployed Mobile Net v2 by using serverless on AWS Cloud Formation. The AWS Cloud Formation will gather the multiple resources to start the application and we can manage the resources from single stack. For Computing of the model used AWS Lambda (event based trigger). The API gateway to manage the requests. S3 storage used as model storage and temporary storage.
+Train Mobilenetv2 on custom classes by using the transfer learning. I have used the trained weights of Imagenet classifier from [Pytorch](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/).
 
-## Prerequisite
-1.  **Node JS** 
-2.  **Docker**
-3.  **Serverless (SLS)** 
-4.  **AWS Free Tier Account**
-5.  **Conda**
-6.  **Pytorch**
+### Dataset Info
 
-## Pre-Trained Model
-The mobilenetv2 can be easily obtained from the torcha and torchvision model. Please run below lines of code to get the pre-trained model.
+A custom dataset will be used to train model, which consists of:
+- Flying Birds
+- Large Quadcopters
+- Small Quadcopters
+- Winged Drone
 
-           import torch
-           model = torch.hub.load('pytorch/vision:v0.6.0', 'mobilenet_v2', pretrained=True)
-           model.eval()
-           traced_model= torch.jit.trace(model, torch.randn(1,3,224,224))
-           traced_model.save(mobilenetv2.pt')
- 
- ## Download labels of Imagenet 1000
- Download the labels from this [link](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)
- 
- ## Upload to S3 Bucket
- Now create any S3 Bucket in AWS and upload the model and labels in S3 Bucket. Please be ensure that S3 bucket regoin and your serverless deploy region will be same. I am choosing the region us-east-1 (North Virgina) to deploy my application. The final result will be appear like this.
- 
-<img src="S3.jpg"> 
+### Image Augmentation
 
-## Deploy the Model
-Store the credentials in `~/.aws/credentails` to run the serverless application. Install the requirements plugin in the serverless app.
-      `serverless plugin install -n serverless-python-requirements`
-Now run the command.
-      `serverless deploy`
+I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation. There is small anomaly when you load the grayscale images like fgbgmask and fgbgdense by using albumenations. The image shape is when you read through PIL is (H, W). By default the Albumenations need the channel also. I converted grayscale images to nd array to create the one new dimension.
 
-## Learning Rate
-Go to your API gateway and do the following steps shown in the image. I have seen the issues when first time you run the model the uploaded image in the binary format. If you redeploy again the issue will be gone and the API Gateway will convert your images into the HEX format and your code will run fine. While redeploying there is no need to delte the stack. Just use the `serverless deploy` command again. In the end it will shows you the url of the api-gateway to accept your requests.
+- **Resize**:
+	- Downscale the images to be able to train for lower dimensions first.
+	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
+- **RandomBrightnessContrast** & **HueSaturationValue**:
+	- Used to reduce the dependency on image colours for prediction.
+	- One of these was applied randomly to **bg, fgbg, fgbgmask and fgbgdense** images.
+- **ShiftScaleRotate**:
+	- Translate, scale and rotate to **bg, fgbg, fgbgmask and fgbgdense** images.
+- **'GridDistortion'**:
+	- Grid analysis estimates the distortion from a checkerboard or thin line grid
+	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
+- **RandomRotate90**:
+	- Images were randomly rotated within 90 degrees.
+	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
+
+### Sample Imaages
 <img src="Save_Model/Sample.jpg">
+
+### Model Architecture
+Last Layer of Mobilenetv2 will be replaced to get 4 classes. The architecture is taken from the Imagenet which is having 1000 classes. While training the model freezing all the layers except the last one.  
+
+### Loss Function
+CrossEntropyLoss - Used Cross Entropy Loss to get the desired results
+
+### Analysis
+
+#### Learning Rate
+
 <img src="Save_Model/Learning_Rate_Curve.jpg">
+
+#### Batch wise Training Loss
 <img src="Save_Model/Batch_Train_Val_Loss_Curve.jpg">
+
+#### Accuracy
+
 <img src="Save_Model/Accuracy_Curve.jpg">
+
+#### Validation Curve
 <img src="Save_Model/Validation_Curve.jpg">
 
 ## Results
-Now paste the link in the Postman. Select the image you want to test it. Go into the Body and choose from-data. In the header add one more key and add the content-type with their key and value will be multipart/form-data. Initially the AWS Lambda will be in cool stage so your first two request will be server timeout. After that will predict your predictions.
+
+### Miss Classified Images
+The Miss classified images with their gradcam results.
 <img src="Save_Model/Mis-classified Images.jpg">
-<img src="Save_Model/Corr-classified Images.jpg">
-
-## GradCam Results
-
-<img src="Save_Model/gradcam_Correct.png">
 <img src="Save_Model/gradcam_Incorrect.png">
+
+### Correctly Classified Images
+The Correctly classified images with their gradcam results.
+<img src="Save_Model/Corr-classified Images.jpg">
+<img src="Save_Model/gradcam_Correct.png">
 
 ### Appendix
  - Great thanks to the [blog.](https://www.analyticsvidhya.com/blog/2019/10/how-to-master-transfer-learning-using-pytorch/)
