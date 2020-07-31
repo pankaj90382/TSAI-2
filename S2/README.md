@@ -57,7 +57,7 @@ CrossEntropyLoss - Used Cross Entropy Loss to get the desired results
 The Miss classified images with their gradcam results.
 <img src="Save_Model/Mis-classified Images.jpg">
 <figure>
-    <figcaption>Grad-Cam Incorrect Images</figcaption>
+    <figcaption><h3>Grad-Cam Incorrect Images</h3></figcaption>
     <img src="Save_Model/gradcam_Incorrect.png">
 </figure>
 
@@ -65,7 +65,7 @@ The Miss classified images with their gradcam results.
 The Correctly classified images with their gradcam results.
 <img src="Save_Model/Corr-classified Images.jpg">
 <figure>
-    <figcaption>Grad-Cam Correct Images</figcaption>
+    <figcaption><h3>Grad-Cam Correct Images</h3></figcaption>
     <img src="Save_Model/gradcam_Correct.png">
 </figure>
 
