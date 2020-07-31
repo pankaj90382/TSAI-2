@@ -36,7 +36,7 @@ Now run the command.
 
 ## Learning Rate
 Go to your API gateway and do the following steps shown in the image. I have seen the issues when first time you run the model the uploaded image in the binary format. If you redeploy again the issue will be gone and the API Gateway will convert your images into the HEX format and your code will run fine. While redeploying there is no need to delte the stack. Just use the `serverless deploy` command again. In the end it will shows you the url of the api-gateway to accept your requests.
-
+<img src="Save_Model/Sample.jpg">
 <img src="Save_Model/Learning_Rate_Curve.jpg">
 <img src="Save_Model/Batch_Train_Val_Loss_Curve.jpg">
 <img src="Save_Model/Accuracy_Curve.jpg">
