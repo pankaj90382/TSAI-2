@@ -81,6 +81,8 @@ I have used the [albumentations](https://albumentations.readthedocs.io/en/latest
 	- Grid analysis estimates the distortion from a checkerboard or thin line grid.
 - **RandomRotate90**:
 	- Images were randomly rotated within 90 degrees.
+	
+:+1: Planning to use simple image augmentation strategy. There are some errors while implementing the variable image size strategy (SPPnet).
 
 ### Sample Images
 <img src="Save_Model/Sample.jpg">
