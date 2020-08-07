@@ -13,20 +13,15 @@ A custom dataset will be used to train model, which consists of:
 
 ## Resizing Strategy
 
-#### :+1:  SPPnet Strategy in Pretrained mobilenet:
- :point_right:  Original paper :  [SPPnet Paper](https://arxiv.org/abs/1406.4729)
-  
- :point_right:  Refernce code  :  [Sppnet](https://github.com/yueruchen/sppnet-pytorch/blob/master/spp_layer.py)
- 
- :point_right: SPPnet with mobilenet Refernce code :[mobile-spp](https://github.com/sobti/TSAI/blob/master/Drone%20Prediction/MobilenetV2_Model.ipynb)
- 
-## Sppnet:(Taken from paper)
+### SPP net Strategy Pretrained Mobilenet:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sobti/TSAI/blob/master/Drone%20Prediction/MobilenetV2_Model.ipynb)
 
  ![Sppnet](https://user-images.githubusercontent.com/42212648/89426205-857e6080-d757-11ea-8510-3147acea6a78.png)
  
 Usually deep neural network requires fixed size input images. This is obtained mostly by transformation (resize and center crop) strategy. with transformation , there is possible chances that we loose important infromation from the images. Sppnet overcome the requiremnet to trtanform the images to arbitary size and hence neural net equip with SPP-net can run with images having varying sizes.Pyramid pooling is also robust to object deformations. With these advantages, SPP-net should in general improve all CNN-based image classification methods.
 
-##  implenmenting SPP net:
+####  implenmenting SPP net:
 
 - Sppnet is mostly implement before FC layer.
 
@@ -66,11 +61,12 @@ Usually deep neural network requires fixed size input images. This is obtained m
  
  - Sometimes without having control on images can cause out of memory issue as image going can be having higher dimensions.
 
-## yet to explore part:
+#### :point_right: Issues and Exploration:
 
-- ** I have to make batch size = 1 for variable size images ( Needs to explore more on it) 
+- I have to make batch size = 1 for variable size images ( Needs to explore more on it) 
 
--  facing Cuda out of memory as few images are very large .Advisable to keep images in certain range.
+- facing Cuda out of memory as few images are very large .Advisable to keep images in certain range.
+
 ### Image Augmentation
 
 I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation.
@@ -133,3 +129,6 @@ The Correctly classified images with their gradcam results.
  - Great thanks to the [blog.](https://www.analyticsvidhya.com/blog/2019/10/how-to-master-transfer-learning-using-pytorch/)
  - [Pytorch Transfer Learning](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) 
  - [Pytorch Neural Transfer Style](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)
+ - [SPPnet Paper](https://arxiv.org/abs/1406.4729)
+ - Implementation of [Sppnet](https://github.com/yueruchen/sppnet-pytorch/blob/master/spp_layer.py) Paper
+ 
