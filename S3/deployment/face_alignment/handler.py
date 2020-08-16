@@ -13,7 +13,7 @@ from requests_toolbelt.multipart import decoder
 from face_alignment import align_image
 
 
-# Define environment variables
+# Define dat file
 MODEL_PATH = 'shape_predictor_5_face_landmarks.dat'
 
 
