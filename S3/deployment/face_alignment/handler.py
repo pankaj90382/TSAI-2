@@ -42,7 +42,7 @@ def align_face(event, context):
 
         # Align image
         status, output = align_image(MODEL_PATH, picture)
-        print('status of align':status)
+        print('status of align:',status)
         if status == 'success':
             buffer = io.BytesIO()
             output.save(buffer, format="JPEG")

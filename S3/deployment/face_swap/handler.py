@@ -43,7 +43,7 @@ def swap_face(event, context):
 
         # Swap images
         status, output = swap_image(picture_source, picture_target, MODEL_PATH)
-        print('Status of Alignment of Face': status)
+        print('Status of Alignment of Face:', status)
         if status == 'success':
             buffer = io.BytesIO()
             output.save(buffer, format="JPEG")
