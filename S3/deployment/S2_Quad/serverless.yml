@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: frecog
+service: s2-project-pytorch
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -28,12 +28,37 @@ provider:
   timeout: 60
   environment:
     S3_BUCKET: pankaj90382-dnn
-    RECOG_PATH: traced_face_recog.pt
+    MODEL_PATH: S2_Mobilenet_traced.pt
+    CLASS_LABEL: S2_labels.txt
   iamRoleStatements:
     - Effect: "Allow"
       Action:
         - "s3:getObject"
       Resource: "arn:aws:s3:::pankaj90382-dnn/*"
+
+# you can overwrite defaults here
+#  stage: dev
+#  region: us-east-1
+
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
 
 custom:
   pythonRequirements:
@@ -63,32 +88,7 @@ package:
     - test/**
     - __pycache__/**
     - .pytest_cache/**
-    - .vscode/**
-
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+    - model/**
 
 # you can add packaging information here
 #package:
@@ -100,13 +100,13 @@ package:
 #    - exclude-me-dir/**
 
 functions:
-  rface:
-    handler: handler.rface
+  s2_tl_mobilenet:
+    handler: handler.s2_tl_mobilenet
     memorySize: 3008
     timeout: 60
     events:
       - http:
-          path: facerecog
+          path: classify
           method: post
           cors: true
 #    The following are a few example events you can configure
