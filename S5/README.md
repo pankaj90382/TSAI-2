@@ -1,6 +1,6 @@
 # Session 5 - Monocular Human Pose Estimation and ONNX Models
 
-[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/pose)
+[![Website](https://img.shields.io/badge/Website-green.svg)]()
 
 This assignment had two objectives:
 
@@ -26,7 +26,7 @@ The model deployed on AWS Lambda gave the following results
 
 |                             Input Image                             |                             Output Image                             |
 | :-----------------------------------------------------------------: | :------------------------------------------------------------------: |
-| <img src="./Save_Model/Robert.png" width="250px" alt="centered image" /> | <img src="./Save_Model/Robert_Pose.jpg" width="250px" alt="centered image" /> |
+| <img src="./Save_Model/Robert.png" width="250px" alt="centered image" /> | <img src="./Save_Model/Robert_Pose.png" width="250px" alt="centered image" /> |
 
 <br />
 
