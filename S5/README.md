@@ -26,7 +26,7 @@ The model deployed on AWS Lambda gave the following results
 
 |                             Input Image                             |                             Output Image                             |
 | :-----------------------------------------------------------------: | :------------------------------------------------------------------: |
-| <img src="./images/input.jpg" width="250px" alt="centered image" /> | <img src="./images/output.jpg" width="250px" alt="centered image" /> |
+| <img src="./Save_Model/Robert.png" width="250px" alt="centered image" /> | <img src="./Save_Model/Robert_Pose.jpg" width="250px" alt="centered image" /> |
 
 <br />
 
