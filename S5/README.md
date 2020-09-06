@@ -61,7 +61,7 @@ But model(1.c) combines the upsampling and convolutional parameters into deconvo
     <img src="./Save_Model/flowbased.png" width="900px" alt="centered image" />
 </p>
 
-The idea behind the Multi-person pose tracking is to assign a unique identication number (id) to a estimated human poses in a frame, and then tracks these human pose
+The idea behind the Multi-person pose tracking is to assign a unique identification number (id) to a estimated human poses in a frame, and then tracks these human pose
 across other frames.
 
 I<sup>k</sup> : k<sup>th</sup> Frame  
@@ -85,7 +85,7 @@ To achieve this the authors incorporated the following which makes their model d
 
 They found that applying a detector meant for a image to video can lead to missing and predicting false detections as a frame from a video can be blur or can have occlusions. For this they proposed to generate boxes for the processing frame from nearby frames using temporal information expressed in optical flow.
 
-They proposed that joints coordinates of one human instance in a frame can be estimated from the previous frame. More specically, for each joint location (x, y) in J<sub>i</sub><sup>k-1</sup>, the propagated joint location would be (x + *x; y + *y),
+They proposed that joints coordinates of one human instance in a frame can be estimated from the previous frame. More specifically, for each joint location (x, y) in J<sub>i</sub><sup>k-1</sup>, the propagated joint location would be (x + *x; y + *y),
 where *x; *y are the flow field values at joint location (x, y).
 
 Using this a new bounding box is computed for the human pose in the crrent frame.That box is expanded to some extend (15% in experiments) and is used as the candidate box for pose estimation.
