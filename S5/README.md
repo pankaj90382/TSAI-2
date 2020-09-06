@@ -44,7 +44,7 @@ ResNet architecture with three deconvolutional layers over the last convolution 
 
 - The deconvolutional layers with batch normalization and
   ReLU activationare used.
-- Each layer has 256 lters with 4X4 kernel.
+- Each layer has 256 Fillters with 4X4 kernel.
 - The stride is 2.
 - A 1X1 convolutional layer is added at last to generate predicted
   heatmaps for all k key points.
@@ -86,7 +86,7 @@ To achieve this the authors incorporated the following which makes their model d
 They found that applying a detector meant for a image to video can lead to missing and predicting false detections as a frame from a video can be blur or can have occlusions. For this they proposed to generate boxes for the processing frame from nearby frames using temporal information expressed in optical flow.
 
 They proposed that joints coordinates of one human instance in a frame can be estimated from the previous frame. More specically, for each joint location (x, y) in J<sub>i</sub><sup>k-1</sup>, the propagated joint location would be (x + *x; y + *y),
-where *x; *y are the flow field values at joint location (x, y).
+where *x; *y are the flow field values at joint location (x, y).
 
 Using this a new bounding box is computed for the human pose in the crrent frame.That box is expanded to some extend (15% in experiments) and is used as the candidate box for pose estimation.
 
@@ -125,7 +125,7 @@ They are combined using Non-Maximum Suppression (NMS) operation. These boxes are
 
 - Tracking
 
-The instances are tracked in a double-ended queue with fixed length L<sub>Q</sub>, denoted as
+The instances are tracked in a double-ended queue with fixed length L<sub>Q</sub>, denoted as
 
 Q = [P<sub>k-1</sub>,P<sub>k-1</sub>, ..., P<sub>k- L<sub>Q</sub></sub>]
 
