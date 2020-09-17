@@ -1,6 +1,6 @@
 # Session 5 - Monocular Human Pose Estimation and ONNX Models
 
-[![Website](https://img.shields.io/badge/Website-green.svg)]()
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
 
 This assignment had two objectives:
 
@@ -188,3 +188,8 @@ class JointsMSELoss(nn.Module):
 
         return loss / num_joints  # Average loss
 ```
+
+## References
+
+-   [https://github.com/microsoft/human-pose-estimation.pytorch](https://github.com/microsoft/human-pose-estimation.pytorch)
+-   [https://arxiv.org/pdf/1804.06208.pdf](https://arxiv.org/pdf/1804.06208.pdf)
