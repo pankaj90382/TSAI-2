@@ -12,6 +12,7 @@ import boto3
 import torch
 from PIL import Image
 from requests_toolbelt.multipart import decoder
+import torchvision
 
 
 MODEL_PATH = 'red_car_gan_generator.traced.pt'
@@ -24,8 +25,8 @@ def generate(event, context):
         fixed_noise = torch.randn(64, 100, 1, 1, device='cpu')
         with torch.no_grad():
             fake = model(fixed_noise).detach().cpu()
-        generated_image = random.choice(fake).permute(1, 2, 0).numpy().copy() * 255
-        generated_image = Image.fromarray(generated_image.astype(np.uint8))
+        generated_image = torchvision.utils.make_grid(fake, normalize=True).permute(1,2,0).numpy()*255
+        generated_image = Image.fromarray(generated_image.astype(np.uint8), mode='RGB')
 
         print('Loading output to buffer')
         buffer = io.BytesIO()

@@ -41,6 +41,7 @@ class Model:
         ])
     
     def _to_numpy(self, image):
+        # Convert from H,W,C to C,H,W format and add dimension for batch_size to get - N,C,H,W
         return np.expand_dims(
             np.transpose(image, (2, 0, 1)), axis=0
         )

@@ -16,7 +16,7 @@ from requests_toolbelt.multipart import decoder
 from model import Model
 
 
-MODEL_PATH = 'human_pose_estimation.onnx'
+MODEL_PATH = 'simple_pose_estimation.quantized.onnx'
 THRESHOLD = 0.8
 
 
@@ -33,8 +33,12 @@ def fetch_input_image(event):
     # Obtain the final picture that will be used by the model
     picture = decoder.MultipartDecoder(body, content_type_header).parts[0]
     print('Picture obtained')
+
+    filename = picture.headers[b'Content-Disposition'].decode().split(';')[1].split('=')[1]
+    if len(filename) < 4:
+        filename = picture.headers[b'Content-Disposition'].decode().split(';')[2].split('=')[1]
     
-    return picture.content
+    return picture.content, filename
 
 
 def load_image(image_bytes):
@@ -76,11 +80,11 @@ def draw_pose(model, key_points, image_array, output_shape, threshold):
     return Image.fromarray(cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR))
 
 
-def estimate_pose(event, context):
+def pose_estimate(event, context):
     """Perform human pose estimation."""
     try:
         # Get image from the request
-        picture = fetch_input_image(event)
+        picture, filename = fetch_input_image(event)
         image = load_image(picture)
 
         print('Loading model')
@@ -108,7 +112,7 @@ def estimate_pose(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': True
             },
-            'body': json.dumps({'data': pose_image_bytes.decode('ascii')})
+            'body': json.dumps({'file': filename.replace('"', ''), 'data': pose_image_bytes.decode('ascii')})
         }
     except Exception as e:
         print(repr(e))
