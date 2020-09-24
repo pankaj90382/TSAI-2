@@ -38,7 +38,7 @@ A framework for estimating generative models via an adversarial process, in whic
 |<img src="./Save_Model/Loss.JPG" width="500px" alt="centered image" /> |<img src="./Save_Model/Smooth_Curve_Loss.JPG" width="500px" alt="centered image" /> |
 
 ### Animation of Training Set
-![Alt text](Save_Model/cars.gif)
+![montage](Save_Model/cars.gif)
  
  
  ## APPROACH 2:LSGAN
@@ -70,11 +70,11 @@ Unsupervised learning with generative adversarial networks (GANs) has proven hug
 |<img src="./Save_Modified_Model/CurveLoss.JPG" width="500px" alt="centered image" /> |<img src="./Save_Modified_Model/Smooth Curve Loss.JPG" width="500px" alt="centered image" /> |
 
 ### Animation of Training Set
-![Alt text](Save_Modified_Model/cars.gif)
+![montage](Save_Modified_Model/cars.gif)
  
 ## Refrences
 
  -  [Pytorch DCGAN Implementation](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
  -  [LSGAN PYTORCH IMPEMENTATION](https://github.com/eriklindernoren/PyTorch-GAN)
- -  [DCGAN Paper](https://arxiv.org/pdf/1406.2661.pdf))
+ -  [DCGAN Paper](https://arxiv.org/pdf/1406.2661.pdf)
  -  [LSGAN Paper](https://arxiv.org/pdf/1611.04076.pdf)
