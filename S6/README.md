@@ -1,6 +1,7 @@
 # Session 6 - Generative Adversarial Networks
 
 [![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/dcgan)
+
 The goal of this assignment is to create an interactive website that generates Indian cars.
 
 All the files and the models have to be deployed to AWS Lambda. The code to deploy them can be found [here](deployment/).
