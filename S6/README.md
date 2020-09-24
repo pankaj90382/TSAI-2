@@ -1,6 +1,6 @@
 # Session 6 - Generative Adversarial Networks
 
-[![Website](https://img.shields.io/badge/Website-green.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/dcgan)
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
 
 The goal of this assignment is to create an interactive website that generates Indian cars.
 
