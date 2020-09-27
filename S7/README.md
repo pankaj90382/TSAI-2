@@ -1,4 +1,4 @@
-# Session 6 - Variation Auto Encoders
+# Session 7 - Variation Auto Encoders
 
 [![Website](https://img.shields.io/badge/Website-green.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
 
