@@ -1,5 +1,14 @@
+
+
+
+
+
 ## Animation
-![montage](Save_Model/cars.gif)
+
+|                               Reconstructed Images                    |                          Generated Images                             |
+| :-------------------------------------------------------------------: | :-------------------------------------------------------------------: |
+|![montage](Save_Model/cars.gif)                                        |![montage](Save_Model/samples.gif)                                     |
+
 
 
 ## Refrences
