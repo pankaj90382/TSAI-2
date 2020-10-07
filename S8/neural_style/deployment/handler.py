@@ -12,7 +12,7 @@ from requests_toolbelt.multipart import decoder
 
 from style_image import stylize
 
-MODEL_PATH = 'neural_model'
+MODEL_PATH = 'neural.model'
 
 
 def fetch_inputs(event):
