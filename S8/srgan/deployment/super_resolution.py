@@ -2,7 +2,21 @@ import math
 import torch
 from torch import nn
 from torchvision import transforms
-from torchvision.transforms import ToPILImage
+from torchvision.transforms import Compose, RandomCrop, ToTensor, ToPILImage, CenterCrop, Resize
+
+# Provide valid crop size. Returns multiple of upscale_factor
+def calculate_valid_crop_size(crop_size, upscale_factor):
+    return crop_size - (crop_size % upscale_factor)
+
+# Provides set of Low resolution images, High resolution images restored by Bicubic interpolation and the actual input HR image (centercropped.)
+def image_transform_LR_HR_Restored(HR_image, crop_size, upscale_factor):
+    LR_scale = Resize(crop_size // upscale_factor, interpolation=Image.BICUBIC)
+    HR_scale = Resize(crop_size, interpolation=Image.BICUBIC)
+
+    HR_image = CenterCrop(crop_size)(HR_image)
+    LR_image = LR_scale(HR_image)
+    HR_restored_image = HR_scale(LR_image)
+    return ToTensor()(LR_image), ToTensor()(HR_restored_image), ToTensor()(HR_image)
 
 
 class ResidualBlock(nn.Module):
@@ -86,11 +100,16 @@ def load_image(image):
 
 
 def upscale(image, model_path):
-    image = load_image(image)
+    w, h = image.size
+    UPSCALE_FACTOR=4
+    crop_size = calculate_valid_crop_size(min(w, h), UPSCALE_FACTOR)
+    val_lr, val_hr_restored, val_hr = image_transform_LR_HR_Restored(image, crop_size, UPSCALE_FACTOR)
+    val_lr = val_lr.to(torch.device("cpu")).unsqueeze(0)
 
-    model = Generator(2).eval()
+    # Upscale is 4
+    model = Generator(UPSCALE_FACTOR).eval()
     model.load_state_dict(torch.load(model_path))
 
-    output = model(image)
+    output = model(val_lr)
 
-    return ToPILImage()(output[0])
+    return ToPILImage()(output[0]), ToPILImage() (val_hr), ToPILImage() (val_hr_restored)

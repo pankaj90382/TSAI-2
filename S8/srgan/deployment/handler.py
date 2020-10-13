@@ -14,7 +14,7 @@ from requests_toolbelt.multipart import decoder
 from super_resolution import upscale
 
 
-MODEL_PATH = 'srgan.pt'
+MODEL_PATH = 'netG.pth'
 
 
 def fetch_input_image(event):
@@ -41,12 +41,21 @@ def srgan(event, context):
         image = fetch_input_image(event)
 
         # Upscale the image
-        output = upscale(image, MODEL_PATH)
+        sr, val_hr, val_hr_restored = upscale(image, MODEL_PATH)
 
         # Convert output to bytes
-        buffer = io.BytesIO()
-        output.save(buffer, format="JPEG")
-        output_bytes = base64.b64encode(buffer.getvalue())
+        print("Loading output to buffer")
+        buffer_hr_restored = io.BytesIO()
+        val_hr_restored.save(buffer_hr_restored, format="JPEG")
+        hr_restored_bytes = base64.b64encode(buffer_hr_restored.getvalue())
+
+        buffer_hr = io.BytesIO()
+        val_hr.save(buffer_hr, format="JPEG")
+        hr_bytes = base64.b64encode(buffer_hr.getvalue())
+
+        buffer_sr = io.BytesIO()
+        sr.save(buffer_sr, format="JPEG")
+        sr_bytes = base64.b64encode(buffer_sr.getvalue())
 
         return {
             'statusCode': 200,
@@ -55,7 +64,8 @@ def srgan(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': True
             },
-            'body': json.dumps({'data': output_bytes.decode('ascii')})
+            'body': json.dumps({'hr_restored': hr_restored_bytes.decode('ascii'),
+                            'hr': hr_bytes.decode('ascii'), 'sr': sr_bytes.decode('ascii')})
         }
     except Exception as e:
         print(repr(e))
