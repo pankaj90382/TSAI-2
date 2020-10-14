@@ -1,5 +1,8 @@
 # Image Super Resolution
 
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S8/srgan/SRGAN.ipynb)
+
 The objective here is to train SR-GAN (Super Resolution- Generative Adversial Network) on the flying objects dataset to provide Super resolution of the flying object images. The model is then deployed on AWS.
 
 ## Model Hyperparameters
@@ -56,7 +59,7 @@ Model uses perceptual loss function which consists of an adversarial loss and a 
 ### Model results
 Below are the results from SR-GAN. It consists of HR restored image (restored by Bicubic interpolation of the Low resolution image), actual input HR image (centercropped) and the Super Resolution result from the SR-GAN model.
 
-![](Save_Model/sr_result.png)
+![](Save_Model/sr_results.png)
 
 ### Generator/Discriminator Loss Trend versus Epoch
 
