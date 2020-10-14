@@ -62,19 +62,20 @@ Below are the results from SR-GAN. It consists of HR restored image (restored by
 
 Shared below is the Generator/Discriminator Loss trend during training.
 
-![](Save_Model/loss_vs_epoch.png)
+![](Save_Model/loss_vs_epoch.JPG)
 
 ### PSNR and SSIM trend
 
 Shared below are the Peak Signal to Noise Ratio and Structural Similarity Index trend during training.
 
-![](Save_Model/psnr_ssim.png)
+![](Save_Model/psnr_ssim.JPG)
 
 ## Animation
 ![](Save_Model/srgan.gif)
 
 ### Upscale Factor of 4
 We trained the model from scratch, keeping the upscale factor 4, and the output is presented here. Column 1 represents the results from Upsampling Bicubic Interpolation, column 2 represents the ground truth image and the third column is the super resolution image.
+
 ![](Save_Model/epoch_30_index_1.png)
 ![](Save_Model/epoch_30_index_2.png)
 ![](Save_Model/epoch_30_index_3.png)
