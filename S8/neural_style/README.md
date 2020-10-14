@@ -26,11 +26,11 @@ All the files and the models have to be deployed to AWS Lambda. The code to depl
 	 width="256" height="256" /></TD>
    </TR>
    <TR>
-      <TD><img src="" alt="style_image"
+      <TD><img src="starry_night.jpg" alt="style_image"
 	title="Style Image" width="256" height="256" /></TD>
-      <TD><img src="" alt="content_image"
+      <TD><img src="Newton.jpg" alt="content_image"
 	title="Content Image" width="256" height="256" /></TD>
-      <TD><img src="" alt="output_image"
+      <TD><img src="NewtonStyle.jpg" alt="output_image"
 	 width="256" height="256" /></TD>
    </TR>
 </TABLE>
