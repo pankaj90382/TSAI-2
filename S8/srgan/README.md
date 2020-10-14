@@ -56,23 +56,28 @@ Model uses perceptual loss function which consists of an adversarial loss and a 
 ### Model results
 Below are the results from SR-GAN. It consists of HR restored image (restored by Bicubic interpolation of the Low resolution image), actual input HR image (centercropped) and the Super Resolution result from the SR-GAN model.
 
-![](results/sr_result.png)
+![](Save_Model/sr_result.png)
 
 ### Generator/Discriminator Loss Trend versus Epoch
 
 Shared below is the Generator/Discriminator Loss trend during training.
 
-![](results/loss_vs_epoch.png)
+![](Save_Model/loss_vs_epoch.png)
 
 ### PSNR and SSIM trend
 
 Shared below are the Peak Signal to Noise Ratio and Structural Similarity Index trend during training.
 
-![](results/psnr_ssim.png)
+![](Save_Model/psnr_ssim.png)
+
+## Animation
+![](Save_Model/srgan.gif)
 
 ### Using upscale factor of 4
 We trained the model from scratch, keeping the upscale factor 4, and the output is presented here. Column 1 represents the images of size 56x56, column 2 represents the ground truth 224x224 sized image and the third column is the super resolution output of dimension 224x224.
-![](results/epoch_10_index_2.png)
+![](Save_Model/epoch_30_index_1.png)
+![](Save_Model/epoch_30_index_2.png)
+![](Save_Model/epoch_30_index_3.png)
 
 ## Super Resolution GAN Refrences
 - [SRGAN Pytorch Implementation](https://github.com/leftthomas/SRGAN)
