@@ -1,14 +1,16 @@
 # Neural Style Transfer
 
+[![Website](https://img.shields.io/badge/Website-green.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S8/neural_style/msgnet.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S8/neural_style/neural_style_tutorial.ipynb)
+
+
 Neural Style Transfer is used to compose an image in the style of another image. It takes an input image and reproduces it with a new artistic style. The algorithm takes three images, an input image, a content-image, and a style-image, and changes the input to resemble the content of the content-image and the artistic style of the style-image.
 
-<h3>Description</h3>
+All the files and the models have to be deployed to AWS Lambda. The code to deploy them can be found [here](deployment/).
 
-- Model: VGG19 pre-trained model 
-- Loss functions: For Content Loss: 'conv_4' layer and for Style Loss: ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5'] layers 
-- num-steps used: 250
+## Results
 
-<h3>Results</h3>
 <TABLE>
   <TR>
     <TH>Style Image</TH>
@@ -16,11 +18,19 @@ Neural Style Transfer is used to compose an image in the style of another image.
     <TH>Output Image</TH>
   </TR>
    <TR>
-      <TD><img src="https://github.com/akshatjaipuria/AWS-Deployment/blob/master/Style-Transfer/Images/image1.jpg" alt="style_image"
+      <TD><img src="udnie.jpg" alt="style_image"
 	title="Style Image" width="256" height="256" /></TD>
-      <TD><img src="https://github.com/akshatjaipuria/AWS-Deployment/blob/master/Style-Transfer/Images/download1.jpg" alt="content_image"
+      <TD><img src="MonoLisa.jpg" alt="content_image"
 	title="Content Image" width="256" height="256" /></TD>
-      <TD><img src="https://github.com/akshatjaipuria/AWS-Deployment/blob/master/Style-Transfer/Images/download.png" alt="output_image"
+      <TD><img src="MonoLisaStyle.jpg" alt="output_image"
+	 width="256" height="256" /></TD>
+   </TR>
+   <TR>
+      <TD><img src="" alt="style_image"
+	title="Style Image" width="256" height="256" /></TD>
+      <TD><img src="" alt="content_image"
+	title="Content Image" width="256" height="256" /></TD>
+      <TD><img src="" alt="output_image"
 	 width="256" height="256" /></TD>
    </TR>
 </TABLE>
@@ -30,4 +40,3 @@ Neural Style Transfer is used to compose an image in the style of another image.
 - [Pytorch Implementation](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)
 - [Real Time Neyral Style Transfer](https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer#msg-net)
 - [Fast Neural AI](https://github.com/williamFalcon/fast-neural-style)
-
