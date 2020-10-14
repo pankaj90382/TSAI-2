@@ -3,6 +3,7 @@ import torch
 from torch import nn
 from torchvision import transforms
 from torchvision.transforms import Compose, RandomCrop, ToTensor, ToPILImage, CenterCrop, Resize
+from PIL import Image
 
 # Provide valid crop size. Returns multiple of upscale_factor
 def calculate_valid_crop_size(crop_size, upscale_factor):
@@ -102,14 +103,17 @@ def load_image(image):
 def upscale(image, model_path):
     w, h = image.size
     UPSCALE_FACTOR=4
+    print('Getting Crop size')
     crop_size = calculate_valid_crop_size(min(w, h), UPSCALE_FACTOR)
+    print('Getting all HR and LR images')
     val_lr, val_hr_restored, val_hr = image_transform_LR_HR_Restored(image, crop_size, UPSCALE_FACTOR)
+    print('Converting and Squeezing Image')
     val_lr = val_lr.to(torch.device("cpu")).unsqueeze(0)
-
+    print('Generator Loading')
     # Upscale is 4
     model = Generator(UPSCALE_FACTOR).eval()
     model.load_state_dict(torch.load(model_path))
-
+    print('Generator Loading Done')
     output = model(val_lr)
-
+    print('Get final Image')
     return ToPILImage()(output[0]), ToPILImage() (val_hr), ToPILImage() (val_hr_restored)

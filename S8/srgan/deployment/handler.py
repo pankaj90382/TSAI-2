@@ -14,7 +14,7 @@ from requests_toolbelt.multipart import decoder
 from super_resolution import upscale
 
 
-MODEL_PATH = 'netG.pth'
+MODEL_PATH = 'netG.pt'
 
 
 def fetch_input_image(event):
@@ -38,8 +38,9 @@ def srgan(event, context):
     """Super Resolution"""
     try:
         # Get image from the request
+        print('fetching image from buffer')
         image = fetch_input_image(event)
-
+        print('fetched image successfully')
         # Upscale the image
         sr, val_hr, val_hr_restored = upscale(image, MODEL_PATH)
 
