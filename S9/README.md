@@ -1,8 +1,8 @@
-# Session 9 - Neural Embedding
+# Session 9 - Neural Word Embedding
 
-[![Website](https://img.shields.io/badge/Website-blue.svg)]()
+[![Website](https://img.shields.io/badge/Website-blue.svg)](http://face-operations.s3-website-us-east-1.amazonaws.com/)
 
-The goal of this assignment is to perform sentiment analysis on movie reviews i.e. for a given review, the model will predict whether it is a positive review or a negative review. The model is deployed and can be tested [here](http://orionai.s3-website.ap-south-1.amazonaws.com/sentimentanalysis).
+The goal of this assignment is to perform sentiment analysis on movie reviews i.e. for a given review, the model will predict whether it is a positive review or a negative review. The model is deployed and can be tested [here](http://face-operations.s3-website-us-east-1.amazonaws.com).
 
 ## Different Approaches to Sentiment Analysis
 
@@ -12,18 +12,19 @@ We first try out different approaches and then choose the best one among them fo
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
 
-This is a simple model where words are encoded as one-hot vector and fed to a single RNN layer. The model does not perform very well and obtains a test accuracy of just **45.94%**.
+This tutorial covers the workflow of a PyTorch with TorchText project. We'll learn how to: load data, create train/test/validation splits, build a vocabulary, create data iterators, define a model and implement the train/evaluate/test loop. The model will be simple and achieve poor performance, but this will be improved in the subsequent tutorials. In this model words are encoded as one-hot vector and fed to a single RNN layer. This model attains test accuracy of just **45.94%**.
 
 ### 2 - Upgraded Sentiment Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
 
-This approach encodes the words using 100-dimensional GloVe embeddings and feeds them to a LSTM network. The model obtains a test accuracy of **87.74%**.
+Now we have the basic workflow covered, this tutorial will focus on improving our results. We'll cover: using packed padded sequences, loading and using pre-trained word embeddings, different optimizers, different RNN architectures, bi-directional RNNs, multi-layer (aka deep) RNNs and regularization. The script uses the approach to encodes  words using 100-dimensional GloVe embeddings and feeds them to a LSTM network. The model obtains a test accuracy of **87.74%**.
 
 ### 3 - Faster Sentiment Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
 
+After we've covered all the fancy upgrades to RNNs, we'll look at a different approach that does not use RNNs. More specifically, we'll implement the model from Bag of Tricks for Efficient Text Classification. This simple model achieves comparable performance as the Upgraded Sentiment Analysis, but trains much faster.
 In this approach, the following steps are performed:
 
 1. Generate bigrams for each input sentence and append it to the end of the tokenized list.
