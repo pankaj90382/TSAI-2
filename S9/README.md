@@ -12,13 +12,13 @@ We first try out different approaches and then choose the best one among them fo
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S9/1%20-%20Simple%20Sentiment%20Analysis.ipynb)
 
-This tutorial covers the workflow of a PyTorch with TorchText project. We'll learn how to: load data, create train/test/validation splits, build a vocabulary, create data iterators, define a model and implement the train/evaluate/test loop. The model will be simple and achieve poor performance, but this will be improved in the subsequent tutorials. In this model words are encoded as one-hot vector and fed to a single RNN layer. This model attains test accuracy of just **45.94%**.
+This tutorial covers the workflow of a PyTorch with TorchText project. We'll learn how to: load data, create train/test/validation splits, build a vocabulary, create data iterators, define a model and implement the train/evaluate/test loop. The model will be simple and achieve poor performance, but this will be improved in the subsequent tutorials. In this model words are encoded as one-hot vector and fed to a single RNN layer. This model attains test accuracy of just **47%**.
 
 ### 2 - Upgraded Sentiment Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S9/2%20-%20Upgraded%20Sentiment%20Analysis.ipynb)
 
-Now we have the basic workflow covered, this tutorial will focus on improving our results. We'll cover: using packed padded sequences, loading and using pre-trained word embeddings, different optimizers, different RNN architectures, bi-directional RNNs, multi-layer (aka deep) RNNs and regularization. The script uses the approach to encodes  words using 100-dimensional GloVe embeddings and feeds them to a LSTM network. The model obtains a test accuracy of **87.74%**.
+Now we have the basic workflow covered, this tutorial will focus on improving our results. We'll cover: using packed padded sequences, loading and using pre-trained word embeddings, different optimizers, different RNN architectures, bi-directional RNNs, multi-layer (aka deep) RNNs and regularization. The script uses the approach to encodes  words using 100-dimensional GloVe embeddings and feeds them to a LSTM network. The model obtains a test accuracy of **85%**.
 
 ### 3 - Faster Sentiment Analysis
 
@@ -32,19 +32,19 @@ In this approach, the following steps are performed:
 3. Use 2D average pooling with a filter size of `sentence_length x 1` on the embedding matrix.
 4. Feed the output of the above step to a Fully Connected layer.
 
-The model trains very fast and obtains a test accuracy of **85.24%**.
+The model trains very fast and obtains a test accuracy of **85%**.
 
 ### 4 - Convolutional Sentiment Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S9/Convolutional%20Sentiment%20Analysis.ipynb)
 
-This approach uses Convolutional Neural Networks (CNNs) on word embeddings. CNNs can help the model to look at bi-grams (a 1x2 filter), tri-grams (a 1x3 filter) and/or n-grams (a 1x*n* filter) within the text. The intuition here is that the appearance of certain bi-grams, tri-grams and n-grams within the review will be a good indication of the final sentiment. The model obtains a test accuracy of **85.69%**.
+This approach uses Convolutional Neural Networks (CNNs) on word embeddings. CNNs can help the model to look at bi-grams (a 1x2 filter), tri-grams (a 1x3 filter) and/or n-grams (a 1x*n* filter) within the text. The intuition here is that the appearance of certain bi-grams, tri-grams and n-grams within the review will be a good indication of the final sentiment. The model obtains a test accuracy of **85%**.
 
 ### 5 - Transformers Sentiment Analysis
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S9/6%20-%20Transformers%20for%20Sentiment%20Analysis.ipynb)
 
-In this approach, we use a pre-trained transformer model, specifically the BERT (Bidirectional Encoder Representations from Transformers) model to provide embeddings for the text. These embeddings are then fed to a GRU for making predictions. The model obtains a test accuracy of **91.88%**. Since the model is huge in size, it cannot be deployed on AWS lambda.
+In this approach, we use a pre-trained transformer model, specifically the BERT (Bidirectional Encoder Representations from Transformers) model to provide embeddings for the text. These embeddings are then fed to a GRU for making predictions. The model obtains a test accuracy of **92%**. Since the model is huge in size, it cannot be deployed on AWS lambda.
 
 ## 6 - Multi-Class Sentiment Analysis
 
