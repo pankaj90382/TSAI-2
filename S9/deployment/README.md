@@ -1,5 +1,7 @@
 ## Spacy Short Version for requirements
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz#egg=en_core_web_sm==2.3.1
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz#egg=en_core_web_sm==2.3.1 (11 MB)
+
+`Note:- spacy==2.3.2 might possible the lambda will be spaced out.
 
 ## Colab default torchtext version
 torchtext==0.3.1
