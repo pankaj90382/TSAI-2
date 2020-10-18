@@ -11,8 +11,8 @@ from requests_toolbelt.multipart import decoder
 
 from sentiment_analysis import predict_sentiment
 
-MODEL_PATH = 'sentiment_analysis.pt'
-METADATA_PATH = 'sentiment_analysis_metadata.pkl'
+MODEL_PATH = 'upgraded_sentiment_analysis.pt'
+METADATA_PATH = 'upgraded_sentiment_analysis_metadata.pkl'
 
 
 def fetch_inputs(event):

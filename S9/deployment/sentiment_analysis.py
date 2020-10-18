@@ -23,14 +23,17 @@ def load_model(model_path, input_stoi):
 
 
 def predict_sentiment(sentence, model_path, metadata_path):
+    print ('Fetching Meta-Data')
     input_stoi, label_itos = read_metadata(metadata_path)
+    print('Meta Data Loaded')
     model = load_model(model_path, input_stoi)
-
+    print('Tokenization')
     tokenized = [tok for tok in sentence.split()]
     indexed = [input_stoi[t] for t in tokenized]
     tensor = torch.LongTensor(indexed)
     tensor = tensor.unsqueeze(1)
     length_tensor = torch.LongTensor([len(indexed)])
+    print('Parsing through Model')
     prediction = torch.sigmoid(model(tensor, length_tensor))
-
+    print('prediction-',prediction)
     return label_itos[round(prediction.item())]
