@@ -17,7 +17,7 @@ All the code for deployment can be found in the [deployment](deployment) directo
 
 ## Results
 
-Since the model was trained on a very small dataset (due to limitations on google colab), the results are not very accurate.
+Since the model was trained on a very small dataset like IWSLT (International Workshop on Spoken Language) Data Set(due to limitations on google colab), the results are not very accurate.
 
 ### Input Sentence
 
@@ -40,6 +40,7 @@ An attention mechanism allows the model to focus on the currently most relevant 
 <p align='center'>
     <img src="./attention.jpeg" width="430px" alt="attention mechanism" />  
 </p>
+
 ## Refrences
 
  - [Pytorch Seq2Seq Tutorial Deployment](https://pytorch.org/tutorials/beginner/deploy_seq2seq_hybrid_frontend_tutorial.html)
