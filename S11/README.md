@@ -1,7 +1,7 @@
 # Session 11 - GRU, Attention Mechanism & Transformers
 
-[![Website](https://img.shields.io/badge/Website-blue.svg)](http://orionai.s3-website.ap-south-1.amazonaws.com/machinetranslation)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ogPvV4JI3Gr0-kWsjysmoDsZLuRtTbU-?usp=sharing)
+[![Website](http://face-operations.s3-website-us-east-1.amazonaws.com)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI-2/blob/master/S11/Translation_by_attention_using_encoder_decoder.ipynb)
 
 The goal of this assignment is to train and deploy a model which can translate sentence from German to English.
 
@@ -13,7 +13,7 @@ All the code for deployment can be found in the [deployment](deployment) directo
 - Epochs: 10
 - Learning Rate: 0.0003
 - Optimizer: Adam
-- Batch Size: 320
+- Batch Size: 64
 
 ## Results
 
