@@ -8,15 +8,35 @@ import json
 import base64
 import boto3
 import torch
+import os
 
 print('torch version:',torch.__version__)
 
 from requests_toolbelt.multipart import decoder
 
-from german_to_english import translate_sentence
+from attention import get_text_translate_function
 
-MODEL_PATH = 'model.pt'
-METADATA_PATH = 'model_metadata.pkl'
+S3_BUCKET = os.environ['S3_BUCKET'] if 'S3_BUCKET' in os.environ else 'pankaj90382-dnn'
+MODEL_PATH = os.environ['MODEL_PATH'] if 'MODEL_PATH' in os.environ else 'translation-encoder-decoder-de-en.pt'
+METADATA_PATH = os.environ['METADATA_PATH'] if 'METADATA_PATH' in os.environ else 'de-to-en-meta.dill.pkl'
+
+print('Downloading Model')
+
+s3 = boto3.client('s3')
+
+def loading_from_s3(PATH):
+    try:
+        if os.path.isfile(PATH) != True:
+            obj = s3.get_object(Bucket=S3_BUCKET, Key=PATH)
+            print(f"Creating {PATH} Bytestream")
+            bytestream = io.BytesIO(obj['Body'].read())
+            print("Loading :- ", PATH)
+            # model = torch.jit.load(bytestream)
+            print(f"{PATH} Loaded...")
+            return bytestream
+    except Exception as e:
+        print(repr(e))
+        raise(e)
 
 
 def fetch_inputs(event):
@@ -42,8 +62,12 @@ def translate(event, context):
         input_text = fetch_inputs(event)
         print(input_text)
 
+        print("loading Model and Meta Datafile")
+        model = loading_from_s3(MODEL_PATH)
+        metadata = loading_from_s3(METADATA_PATH)
+        print("Loaded Model and Meta Data File")
         # Output Sentiment
-        output = translate_sentence(input_text, MODEL_PATH, METADATA_PATH)
+        output = get_text_translate_function(model, metadata, input_text)
         print(output)
 
         return {
