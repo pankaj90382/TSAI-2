@@ -5,9 +5,9 @@
 
 The goal of this assignment is to deploy an image caption generation model by using Show, Attend and Tell Model (SNT) on Flicker 8k Dataset. The code for deployment can be found [here](deployment).
 
-### Dataset
+## Dataset
 
-#### Flicker 8k 
+### Flicker 8k 
 The Flicker 8k Dataset published by *University of illions of urbana-champaign, Department of Computer Science*. The dataset can be requested by using a [form](https://forms.illinois.edu/sec/1713398). Within a short time, you will receive an email that contains links to two files:
 
 - Flickr8k_Dataset.zip (1 Gigabyte) An archive of all photographs.
@@ -19,10 +19,15 @@ The dataset contains:-
 - Flicker8k_Dataset: Contains 8092 photographs in jpeg format.
 - Flickr8k_text: Contains a number of files containing different sources of descriptions for the photographs
 
-#### Image Captions
+### Image Captions
 The Flicker 8k captions downloaded from paper *[Deep Visual-Semantic Alignments for Generating Image Descriptions, Andrej Karpathy, Stanford University](https://cs.stanford.edu/people/karpathy/deepimagesent/)*. The dataset contains the captions for Flicker 8k, 30k and MSCOCO Dataset.
 
-### Parameters and Hyperparameters
+### Data Split
+- Train: 6000
+- Val: 1000
+- Test: 1000
+
+## Parameters and Hyperparameters
 
 - Encoder: Pre-trained ResNet-18 on ImageNet dataset
 - Decoder Learning Rate: 4e-4
@@ -33,7 +38,7 @@ The Flicker 8k captions downloaded from paper *[Deep Visual-Semantic Alignments 
 - Decoder dimension: 128
 - Dropout: 0.5
 
-### Image Captioning:
+## Image Captioning:
 The goal of image captioning is to generate a trusted description for a given image. So we need to ensure the correctness of the objects, attribute information, semantic information, and position relationship information in the description. 
  
 Subtask in Image captioning :
@@ -43,7 +48,7 @@ Subtask in Image captioning :
 
 We can use an encoder to automatically extract image features, and then use LSTM's as decoders to generate descriptions. Encoder-Decoder structure have become the basic framework of image captioning.
 
-### Architecture :
+## Architecture :
 
 Encoder-Decoder architecture- Typically, a model that generates sequences will use an Encoder to encode the input into a fixed form and a Decoder to decode it, word by word, into a sequence.
 
@@ -56,7 +61,7 @@ Attention-  Attention models, or attention mechanisms, are input processing tech
     <img src="./Save_Model/decoder_att.png" width="430px" alt="architecture" />  
 </p>
 
-### Attention Mechanism
+## Attention Mechanism
 
 A neural network is considered to be an effort to mimic human brain actions in a simplified manner. Attention Mechanism is also an attempt to implement the same action of selectively concentrating on a few relevant things, while ignoring others in deep neural networks.
 
@@ -66,7 +71,7 @@ An attention mechanism allows the model to focus on the currently most relevant 
     <img src="./Save_Model/attention.jpeg" width="430px" alt="attention mechanism" />  
 </p>
 
-### Results
+## Results
 
 |                             Input Image                              |                    Output Caption                    |
 | :------------------------------------------------------------------: | :--------------------------------------------------: |
