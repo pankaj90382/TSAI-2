@@ -53,7 +53,7 @@ Encoder-Decoder architecture- Typically, a model that generates sequences will u
 Attention-  Attention models, or attention mechanisms, are input processing techniques for neural networks that allows the network to focus on specific aspects of a complex input, one at a time until the entire dataset is categorized.
 
 <p align='center'>
-    <img src="./Save_Model/decoder_att.JPG" width="430px" alt="architecture" />  
+    <img src="./Save_Model/decoder_att.png" width="430px" alt="architecture" />  
 </p>
 
 ### Attention Mechanism
@@ -70,9 +70,11 @@ An attention mechanism allows the model to focus on the currently most relevant 
 
 |                             Input Image                              |                    Output Caption                    |
 | :------------------------------------------------------------------: | :--------------------------------------------------: |
-| <img src="./images/input1.jpg" width="300px" alt="centered image" /> |     a man in a wetsuit is surfing on a surfboard     |
-| <img src="./images/input2.jpg" width="300px" alt="centered image" /> |      a group of people sit on a snowy mountain       |
-| <img src="./images/input3.jpg" width="300px" alt="centered image" /> | a young boy in a red shirt is riding on a tire swing |
+| <img src="./Save_Model/1.jpg" width="300px" alt="centered image" /> |     a girl in a pink shirt is jumping in the water     |
+| <img src="./Save_Model/2.jpg" width="300px" alt="centered image" /> |      two people are standing in the water       |
+| <img src="./Save_Model/3.jpg" width="300px" alt="centered image" /> | a woman in a cowboy hat is riding a horse |
+| <img src="./Save_Model/4.jpg" width="300px" alt="centered image" /> | a group of children playing in a pool |
+| <img src="./Save_Model/5.jpg" width="300px" alt="centered image" /> | a man stands on a tree in the woods |
 
 
 ## Refrences
