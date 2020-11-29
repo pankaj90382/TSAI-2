@@ -4,6 +4,7 @@ except ImportError:
     pass
 
 import os
+import sys
 import io
 import json
 import base64
@@ -12,7 +13,7 @@ from requests_toolbelt.multipart import decoder
 from model import sptotex
 
 
-MODEL_PATH = 'STT.pt'
+MODEL_PATH = 'STT1.pt'
 
 
 print('Downloading Model')
@@ -29,6 +30,7 @@ def fetch_input_audio(event):
 
     # Obtain the final audio that will be used by the model
     audio = decoder.MultipartDecoder(body, content_type_header).parts[0]
+    print(type(audio.content))
     print('Audio obtained')
     
     return audio.content
@@ -38,16 +40,20 @@ def STT(event, context):
     """Speech to Text."""
         # Get image from the request
     try:
+        audio_file = '/tmp/temp.wav'
         audio = fetch_input_audio(event)
-        audio = io.BytesIO(audio)
+        print('Size:-', sys.getsizeof(audio))
+        print(audio)
 
-        print("loading Model")
-        model = MODEL_PATH
-        print("Loaded Model")
+        with open(audio_file, 'wb') as f:
+            f.write(audio)
+        print('File Written')
+        print('Path Exsits:- ',os.path.exists(audio_file))
+        print(os.listdir('/tmp/'))
 
         # Get Caption
         print('Getting caption')
-        output = sptotex(audio, model)
+        output = sptotex(audio_file, MODEL_PATH)
         print('Caption:', output)
 
         return {
