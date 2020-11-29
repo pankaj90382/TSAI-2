@@ -190,10 +190,15 @@ def load_model(model):
 	return net
 	
 def srtotext(audio, model):
+	hparams = {"n_cnn_layers": 3, "n_rnn_layers": 5, "rnn_dim": 512, "n_class": 29, "n_feats": 128, "stride":2, "dropout": 0.1}
 	print('Loading mfcc')
 	mfcc = load_audio(audio)
 	print('Load Model')
-	net = load_model(model)
+	net = SpeechRecognitionModel(
+            hparams['n_cnn_layers'], hparams['n_rnn_layers'], hparams['rnn_dim'],
+    hparams['n_class'], hparams['n_feats'], hparams['stride'], hparams['dropout'])
+	print('Already Initiate a class')
+	net.load_state_dict(torch.load(model))
 	net.eval()
 	with torch.no_grad():
 		output = net(mfcc)

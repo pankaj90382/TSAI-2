@@ -8,6 +8,7 @@ import io
 import json
 import base64
 import boto3
+import sys
 from requests_toolbelt.multipart import decoder
 
 from model import srtotext
@@ -55,8 +56,16 @@ def ETESR(event, context):
     """Speech to Text."""
         # Get image from the request
     try:
+        audio_file = '/tmp/temp.wav'
         audio = fetch_input_audio(event)
-        audio = io.BytesIO(audio)
+        print('Size:-', sys.getsizeof(audio))
+        print(audio)
+
+        with open(audio_file, 'wb') as f:
+            f.write(audio)
+        print('File Written')
+        print('Path Exsits:- ',os.path.exists(audio_file))
+        print(os.listdir('/tmp/'))
 
         print("loading Model")
         model = loading_from_s3(MODEL_PATH)
@@ -64,7 +73,7 @@ def ETESR(event, context):
 
         # Get Caption
         print('Getting caption')
-        output = srtotext(audio, model)
+        output = srtotext(audio_file, model)
         print('Caption:', output)
 
         return {
