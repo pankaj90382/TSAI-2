@@ -7,7 +7,7 @@
 
 ### Objective
 
-The goal of this assignment is to increase the [accuracy](https://colab.research.google.com/drive/1z6Ia_zT9HbAd6zxpafDVzd1Q0klMGaA4?usp=sharing), train the model and [deploy](/deployment/STT) a simple asr model that can transcribe one-word utterances. Only the utterances of the following 30 words are supported by the model.
+The goal of this assignment is to increase the [accuracy](https://colab.research.google.com/drive/1z6Ia_zT9HbAd6zxpafDVzd1Q0klMGaA4?usp=sharing), train the model and [deploy](deployment/STT) a simple asr model that can transcribe one-word utterances. Only the utterances of the following 30 words are supported by the model.
 
 <p align="center">
   <img src="Save_Model/words.png", alt="words">
