@@ -1,0 +1,125 @@
+Using username "ubuntu".
+Authenticating with public key "imported-openssh-key"
+Passphrase for key "imported-openssh-key":
+Welcome to Ubuntu 20.04.1 LTS (GNU/Linux 5.4.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Dec  7 19:31:30 UTC 2020
+
+  System load:  0.0                Processes:             121
+  Usage of /:   30.7% of 15.45GB   Users logged in:       1
+  Memory usage: 3%                 IPv4 address for eth0: 172.31.60.239
+  Swap usage:   0%
+
+
+0 updates can be installed immediately.
+0 of these updates are security updates.
+
+
+*** System restart required ***
+Last login: Mon Dec  7 17:11:49 2020 from 114.134.27.110
+ubuntu@ip-172-31-60-239:~$ python3 tweet_sentiment/tweetsa.py
+  File "tweet_sentiment/tweetsa.py", line 105
+    my_prediction=classify_tweet(tweet)
+                                      ^
+TabError: inconsistent use of tabs and spaces in indentation
+ubuntu@ip-172-31-60-239:~$ python3 tweet_sentiment/tweetsa.py
+Traceback (most recent call last):
+  File "tweet_sentiment/tweetsa.py", line 1, in <module>
+    import spacy
+ModuleNotFoundError: No module named 'spacy'
+ubuntu@ip-172-31-60-239:~$ source twsent/bin/activate
+(twsent) ubuntu@ip-172-31-60-239:~$ python3 tweet_sentiment/tweetsa.py
+/home/ubuntu/twsent/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserW                                                                                                             arning: CUDA initialization: Found no NVIDIA driver on your system. Please check                                                                                                              that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/D                                                                                                             ownload/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp                                                                                                             :100.)
+  return torch._C._cuda_getDeviceCount() > 0
+ * Serving Flask app "tweetsa" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployme                                                                                                             nt.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+114.134.27.110 - - [07/Dec/2020 19:39:15] "GET / HTTP/1.1" 200 -
+114.134.27.110 - - [07/Dec/2020 19:39:15] "GET /favicon.ico HTTP/1.1" 404 -
+[2020-12-07 19:40:00,228] ERROR in app: Exception on / [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/app.py", line 2447                                                                                                             , in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/app.py", line 1952                                                                                                             , in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/app.py", line 1821                                                                                                             , in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/_compat.py", line                                                                                                              39, in reraise
+    raise value
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/app.py", line 1950                                                                                                             , in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/app.py", line 1936                                                                                                             , in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "tweet_sentiment/tweetsa.py", line 107, in predict
+    return render_template('results.htm',prediction=my_prediction)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/templating.py", li                                                                                                             ne 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/jinja2/environment.py",                                                                                                              line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/jinja2/environment.py",                                                                                                              line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/jinja2/environment.py",                                                                                                              line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/jinja2/loaders.py", line                                                                                                              115, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/templating.py", li                                                                                                             ne 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/ubuntu/twsent/lib/python3.8/site-packages/flask/templating.py", li                                                                                                             ne 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: results.htm
+114.134.27.110 - - [07/Dec/2020 19:40:00] "POST / HTTP/1.1" 500 -
+^C(twsent) ubuntu@ip-172-31-60-239:~$ python3 tweet_sentiment/tweetsa.py
+/home/ubuntu/twsent/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+ * Serving Flask app "tweetsa" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+114.134.27.110 - - [07/Dec/2020 19:41:55] "POST / HTTP/1.1" 200 -
+114.134.27.110 - - [07/Dec/2020 19:42:24] "GET / HTTP/1.1" 200 -
+114.134.27.110 - - [07/Dec/2020 19:42:27] "POST / HTTP/1.1" 200 -
+^C(twsent) ubuntu@ip-172-31-60-239:~$ deactivate
+ubuntu@ip-172-31-60-239:~$ cd tweet_sentiment/
+ubuntu@ip-172-31-60-239:~/tweet_sentiment$ mkdir extra
+ubuntu@ip-172-31-60-239:~/tweet_sentiment$ cd ..
+ubuntu@ip-172-31-60-239:~$ cp tweet_sentiment/extra/tweetsa.service /etc/systemd/system/
+cp: cannot create regular file '/etc/systemd/system/tweetsa.service': Permission denied
+ubuntu@ip-172-31-60-239:~$ sudo cp tweet_sentiment/extra/tweetsa.service /etc/systemd/system/
+ubuntu@ip-172-31-60-239:~$ sudo systemctl start tweetsa
+ubuntu@ip-172-31-60-239:~$ sudo systemctl enable tweetsa
+Created symlink /etc/systemd/system/multi-user.target.wants/tweetsa.service → /etc/systemd/system/tweetsa.service.
+ubuntu@ip-172-31-60-239:~$ sudo systemctl status tweetsa
+● tweetsa.service - uWSGI instance to serve tweetsa
+     Loaded: loaded (/etc/systemd/system/tweetsa.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2020-12-07 19:59:51 UTC; 46s ago
+   Main PID: 8629 (uwsgi)
+      Tasks: 7 (limit: 9541)
+     Memory: 146.1M
+     CGroup: /system.slice/tweetsa.service
+             ├─8629 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+             ├─8647 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+             ├─8648 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+             ├─8649 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+             ├─8650 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+             └─8651 /home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+
+Dec 07 19:59:51 ip-172-31-60-239 systemd[1]: Started uWSGI instance to serve tweetsa.
+Dec 07 19:59:51 ip-172-31-60-239 uwsgi[8629]: [uWSGI] getting INI configuration from tweetsa.ini
+ubuntu@ip-172-31-60-239:~$ sudo cp tweet_sentiment/extra/tweetsa /etc/nginx/sites-available/
+ubuntu@ip-172-31-60-239:~$ sudo ln -s /etc/nginx/sites-available/tweetsa /etc/nginx/sites-enabled/
+ubuntu@ip-172-31-60-239:~$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+ubuntu@ip-172-31-60-239:~$ sudo systemctl restart nginx
+ubuntu@ip-172-31-60-239:~$ sudo unlink /etc/nginx/sites-enabled/default
+ubuntu@ip-172-31-60-239:~$ sudo systemctl restart nginx
+ubuntu@ip-172-31-60-239:~$

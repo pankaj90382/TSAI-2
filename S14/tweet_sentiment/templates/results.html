@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!--<link rel="stylesheet" type="text/css" href="../static/css/styles.css">-->
+	<link rel=""stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>	
+	<header>
+		<div class="container">
+		<div id="brandname">ALPHAONE</div>
+		<h2>Tweet Sentiment Analysis WebApp</h2>
+	</div>
+	</header>
+	<p style="color:black;font-size:20;"><b>Your Tweet Sentiment</b></p>
+	<div class="results">
+	
+	{%if prediction==0%}
+	<h2 style="color:red;">Negative</h2>
+	{%elif prediction==1%}
+	<h2 style="color:green;">Postive</h2>
+	{%else%}
+	<h2 style="color:blue;">Neutral</h2>
+	{%endif%}
+	</div>
+</body>
+</html>

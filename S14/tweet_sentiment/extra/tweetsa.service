@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve tweetsa
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/tweet_sentiment
+Environment="PATH=/home/ubuntu/twsent/bin"
+ExecStart=/home/ubuntu/twsent/bin/uwsgi --ini tweetsa.ini
+
+[Install]
+WantedBy=multi-user.target
