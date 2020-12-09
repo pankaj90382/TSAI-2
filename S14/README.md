@@ -1,3 +1,9 @@
+# Session 14 - AI based Web Application using Flask
+
+## Objective
+
+Convert any previous sessions into a Flask Application. Deployed it on the EC2 instance using Elastic Ip address (Static Ip Address).
+
 ## Refrences
 
 - [Flask Gateway Timeout Error](https://stackoverflow.com/questions/56097785/flask-nginx-uwsgi-504-gateway-timeout-error)
