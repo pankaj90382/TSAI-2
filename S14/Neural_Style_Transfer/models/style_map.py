@@ -1,0 +1,23 @@
+STYLE_MAP = {
+    1: 'styles/candy.jpg', 
+    2: 'styles/composition_vii.jpg', 
+    3: 'styles/escher_sphere.jpg', 
+    4: 'styles/feathers.jpg', 
+    5: 'styles/frida_kahlo.jpg', 
+    6: 'styles/la_muse.jpg', 
+    7: 'styles/mosaic.jpg', 
+    8: 'styles/mosaic_ducks_massimo.jpg', 
+    9: 'styles/pencil.jpg', 
+    10: 'styles/picasso_selfport1907.jpg', 
+    11: 'styles/rain_princess.jpg', 
+    12: 'styles/Robert_Delaunay,_1906,_Portrait.jpg', 
+    13: 'styles/seated-nude.jpg', 
+    14: 'styles/shipwreck.jpg', 
+    15: 'styles/starry_night.jpg', 
+    16: 'styles/stars2.jpg', 
+    17: 'styles/strip.jpg', 
+    18: 'styles/the_scream.jpg', 
+    19: 'styles/udnie.jpg', 
+    20: 'styles/wave.jpg', 
+    21: 'styles/woman-with-hat-matisse.jpg'
+}

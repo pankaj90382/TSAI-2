@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+</head>
+<body>	
+	<header>
+		<div class="container">
+		<div id="brandname">ALPHAONE</div>
+		<h2>Neural Style Transfer</h2>
+		</div>
+	</header>
+	<div class="ml-container">
+	<h2>Available Style Images</h2>
+	<table>
+			<tr><td><img src="static/candy.jpg" width="256" height="256" class="card-img-top" alt="Candy"><div class="card-body"><p class="card-text">Candy</p></div></td>
+			<td><img src="static/composition_vii.jpg" width="256" height="256" class="card-img-top" alt="Composition VII"><div class="card-body"><p class="card-text">Composition VII</p></div></td>
+			<td><img src="static/escher_sphere.jpg" width="256" height="256" class="card-img-top" alt="Escher Sphere"><div class="card-body"><p class="card-text">Escher Sphere</p></div></td>
+			<td><img src="static/feathers.jpg" width="256" height="256" class="card-img-top" alt="Feathers"><div class="card-body"><p class="card-text">Feathers</p></div></td></tr>
+			<tr><td><img src="static/frida_kahlo.jpg" width="256" height="256" class="card-img-top" alt="Frida Kahlo"><div class="card-body"><p class="card-text">Frida Kahlo</p></div></td>
+			<td><img src="static/la_muse.jpg" width="256" height="256" class="card-img-top" alt="La Muse"><div class="card-body"><p class="card-text">La Muse</p></div></td>
+			<td><img src="static/mosaic.jpg" width="256" height="256" class="card-img-top" alt="Mosaic"><div class="card-body"><p class="card-text">Mosaic</p></div></td>
+			<td><img src="static/mosaic_ducks_massimo.jpg" width="256" height="256" class="card-img-top" alt="Mosaic Ducks Massimo"><div class="card-body"><p class="card-text">Mosaic Ducks Massimo</p></div></td></tr>
+			<tr><td><img src="static/pencil.jpg" width="256" height="256" class="card-img-top" alt="Pencil"><div class="card-body"><p class="card-text">Pencil</p></div></td>
+			<td><img src="static/picasso_selfport1907.jpg" width="256" height="256" class="card-img-top" alt="Picasso Selfport 1907"><div class="card-body"><p class="card-text">Picasso Selfport 1907</p></div></td>
+			<td><img src="static/rain_princess.jpg" width="256" height="256" class="card-img-top" alt="Rain Princess"><div class="card-body"><p class="card-text">Rain Princess</p></div></td>
+			<td><img src="static/Robert_Delaunay,_1906,_Portrait.jpg" width="256" height="256" class="card-img-top" alt="Robert Delaunay"><div class="card-body"><p class="card-text">Robert Delaunay</p></div></td></tr>
+			<tr><td><img src="static/seated-nude.jpg" width="256" height="256" class="card-img-top" alt="Seated Nude"><div class="card-body"><p class="card-text">Seated Nude</p></div></td>
+			<td><img src="static/shipwreck.jpg" width="256" height="256" class="card-img-top" alt="Shipwreck"><div class="card-body"><p class="card-text">Shipwreck</p></div></td>
+			<td><img src="static/starry_night.jpg" width="256" height="256" class="card-img-top" alt="Starry Night"><div class="card-body"><p class="card-text">Starry Night</p></div></td>
+			<td><img src="static/stars2.jpg" width="256" height="256" class="card-img-top" alt="Stars 2"><div class="card-body"><p class="card-text">Stars 2</p></div></td></tr>
+			<tr><td><img src="static/strip.jpg" width="256" height="256" class="card-img-top" alt="Strip"><div class="card-body"><p class="card-text">Strip</p></div></td>
+			<td><img src="static/the_scream.jpg" width="256" height="256" class="card-img-top" alt="The Scream"><div class="card-body"><p class="card-text">The Scream</p></div></td>
+			<td><img src="static/udnie.jpg" width="256" height="256" class="card-img-top" alt="Udnie"><div class="card-body"><p class="card-text">Udnie</p></div></td>
+			<td><img src="static/wave.jpg" width="256" height="256" class="card-img-top" alt="Wave"><div class="card-body"><p class="card-text">Wave</p></div></td></tr>
+			<tr><td><img src="static/woman-with-hat-matisse.jpg" width="256" height="256" class="card-img-top" alt="Woman With Hat Matisse"><div class="card-body"><p class="card-text">Woman With Hat Matisse</p></div></td></tr>
+		</table>
+		<p>
+				{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+				Error: {{ messages[1] }}
+				  {% endif %}
+				{% endwith %}
+		</p>
+		<form method="post" action="/" enctype="multipart/form-data">
+			<dl>
+				<dt> Please Select Style Image.</dt>
+				<dd>
+					<select id="estnstselect" name="style_image">
+					<option value="1">candy</option>
+					<option value="2">composition_vii</option>
+					<option value="3">escher_sphere</option>
+					<option value="4">feathers</option>
+					<option value="5">frida_kahlo</option>
+					<option value="6">la_muse</option>
+					<option value="7">mosaic</option>
+					<option value="8">mosaic_ducks_massimo</option>
+					<option value="9">pencil</option>
+					<option value="10">picasso_selfport1907</option>
+					<option value="11">rain_princess</option>
+					<option value="12">Robert_Delaunay,_1906,_Portrait</option>
+					<option value="13">seated-nude</option>
+					<option value="14">shipwreck</option>
+					<option value="15">starry_night</option>
+					<option value="16">stars2</option>
+					<option value="17">strip</option>
+					<option value="18">the_scream</option>
+					<option value="19">udnie</option>
+					<option value="20">wave</option>
+					<option value="21">woman-with-hat-matisse</option>
+					</select><br>
+				</dd>
+				<dt>Please Upload Content Image.</dt>
+				<dd>
+					<input type="file" name="file" autocomplete="off" required>
+				</dd>
+			</dl>
+			<p>
+				<input type="submit" value="Submit">
+			</p>
+		</form>
+	{% if image %}
+	<img src='data:image/jpeg;base64,{{image}}', alt="Neural_Image">
+	{% endif %} 
+	</div>
+</body>
+</html>

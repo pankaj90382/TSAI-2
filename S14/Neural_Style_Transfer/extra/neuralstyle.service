@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve neuralstyletransfer
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/Neural_Style_Transfer
+Environment="PATH=/home/ubuntu/twsent/bin"
+ExecStart=/home/ubuntu/twsent/bin/uwsgi --ini style.ini
+
+[Install]
+WantedBy=multi-user.target
